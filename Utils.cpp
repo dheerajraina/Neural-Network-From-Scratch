@@ -50,3 +50,28 @@ void generate_and_store_data(const string &filename, int num_examples)
         file.close();
         cout << "Data generated and stored in " << filename << endl;
 }
+
+void load_data(const string &filename, vector<vector<double>> &inputs, vector<vector<double>> &outputs)
+{
+        ifstream file(filename);
+        if (!file.is_open())
+        {
+                cerr << "Unable to open file for reading!" << endl;
+                return;
+        }
+
+        string line;
+        while (getline(file, line))
+        {
+                stringstream ss(line);
+                vector<double> input(2);
+                vector<double> output(1);
+                char comma;
+                ss >> input[0] >> comma >> input[1] >> comma >> output[0];
+                inputs.push_back(input);
+                outputs.push_back(output);
+        }
+
+        file.close();
+        cout << "Data loaded from " << filename << endl;
+}
