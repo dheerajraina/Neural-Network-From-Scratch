@@ -33,3 +33,20 @@ NeuralNetwork::NeuralNetwork(const vector<int> &topology) : topology(topology)
                 }
         }
 }
+
+void NeuralNetwork::forward(const vector<double> &input)
+{
+        layers[0] = input;
+        for (int i = 1; i < topology.size(); ++i)
+        {
+                for (int j = 0; j < topology[i]; ++j)
+                {
+                        double sum = biases[i][j];
+                        for (int k = 0; k < topology[i - 1]; ++k)
+                        {
+                                sum += layers[i - 1][k] * weights[i - 1][k][j];
+                        }
+                        layers[i][j] = sigmoid(sum);
+                }
+        }
+}
