@@ -3,24 +3,23 @@
 #include <iostream>
 #include <vector>
 
-using namespace std;
 class NeuralNetwork
 {
 public:
-        NeuralNetwork(const vector<int> &topology);
-        void train(const vector<vector<double>> &training_inputs,
-                   const vector<vector<double>> &training_outputs, int epochs, double learning_rate);
-        vector<double> predict(const vector<double> &input);
-        double calculate_loss(const vector<double> &predicted, const vector<double> &actual);
+        NeuralNetwork(const std::vector<int> &topology);
+        void train(const std::vector<std::vector<double>> &training_inputs,
+                   const std::vector<std::vector<double>> &training_outputs, int epochs, double learning_rate);
+        std::vector<double> predict(const std::vector<double> &input);
+        double calculate_loss(const std::vector<double> &predicted, const std::vector<double> &actual);
 
 private:
-        vector<int> topology;
-        vector<vector<vector<double>>> weights;
-        vector<vector<double>> biases;
-        vector<vector<double>> layers;
+        std::vector<int> topology;
+        std::vector<std::vector<std::vector<double>>> weights;
+        std::vector<std::vector<double>> biases;
+        std::vector<std::vector<double>> layers;
 
-        void forward(const vector<double> &input);
-        void backward(const vector<double> &input, const vector<double> &expected_output, double learning_rate);
+        void forward(const std::vector<double> &input);
+        void backward(const std::vector<double> &input, const std::vector<double> &expected_output, double learning_rate);
 };
 
 #endif
