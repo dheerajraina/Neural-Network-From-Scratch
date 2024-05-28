@@ -107,8 +107,18 @@ void NeuralNetwork::train(const vector<vector<double>> &training_inputs,
                 {
                         forward(training_inputs[i]);
                         backward(training_inputs[i], training_outputs[i], learning_rate);
-                        /*TODO CALCULATE LOSS */
+                        total_loss += calculate_loss(layers.back(), training_outputs[i]);
                 }
                 cout << "Epoch " << epoch + 1 << "/" << epochs << " - Loss: " << total_loss / training_inputs.size() << endl;
         }
+}
+
+double NeuralNetwork::calculate_loss(const vector<double> &predicted, const vector<double> &actual)
+{
+        double loss = 0.0;
+        for (size_t i = 0; i < predicted.size(); ++i)
+        {
+                loss += (predicted[i] - actual[i]) * (predicted[i] - actual[i]);
+        }
+        return loss / predicted.size();
 }
