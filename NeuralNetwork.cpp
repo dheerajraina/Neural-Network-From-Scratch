@@ -96,3 +96,19 @@ void NeuralNetwork::backward(const vector<double> &input, const vector<double> &
                 }
         }
 }
+
+void NeuralNetwork::train(const vector<vector<double>> &training_inputs,
+                          const vector<vector<double>> &training_outputs, int epochs, double learning_rate)
+{
+        for (int epoch = 0; epoch < epochs; ++epoch)
+        {
+                double total_loss = 0.0;
+                for (size_t i = 0; i < training_inputs.size(); ++i)
+                {
+                        forward(training_inputs[i]);
+                        backward(training_inputs[i], training_outputs[i], learning_rate);
+                        /*TODO CALCULATE LOSS */
+                }
+                cout << "Epoch " << epoch + 1 << "/" << epochs << " - Loss: " << total_loss / training_inputs.size() << endl;
+        }
+}

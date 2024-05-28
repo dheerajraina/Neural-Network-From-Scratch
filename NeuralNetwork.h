@@ -8,7 +8,8 @@ class NeuralNetwork
 {
 public:
         NeuralNetwork(const vector<int> &topology);
-        void train(const vector<vector<double>> &training_inputs, const vector<vector<double>> training_outputs, const int epochs, const double learning_rate);
+        void train(const vector<vector<double>> &training_inputs,
+                   const vector<vector<double>> &training_outputs, int epochs, double learning_rate);
         vector<double> predict(const vector<double> &input);
         double calculate_loss(const vector<double> &predicted, const vector<double> &actual);
 
