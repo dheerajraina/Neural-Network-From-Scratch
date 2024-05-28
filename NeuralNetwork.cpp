@@ -122,3 +122,9 @@ double NeuralNetwork::calculate_loss(const vector<double> &predicted, const vect
         }
         return loss / predicted.size();
 }
+
+vector<double> NeuralNetwork::predict(const vector<double> &input)
+{
+        forward(input);
+        return layers.back();
+}
