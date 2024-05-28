@@ -16,3 +16,8 @@ double generate_random_number(double min, double max)
         // Generate and return a random double
         return dis(gen);
 }
+
+double sigmoid(double x)
+{
+        return 1.0 / (1.0 + exp(-x));
+}
