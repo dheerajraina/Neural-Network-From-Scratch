@@ -12,7 +12,7 @@ int main()
         vector<vector<double>> training_inputs;
         vector<vector<double>> training_outputs;
 
-        generate_and_store_data("data.csv", 10000);
+        // generate_and_store_data("data.csv", 10000);
         load_data("data.csv", training_inputs, training_outputs);
 
         vector<int> topology = {2, 32, 32, 1}; // each element represents one layer with respective number of units (neurons)
